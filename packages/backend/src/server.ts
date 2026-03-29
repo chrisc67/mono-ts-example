@@ -1,6 +1,6 @@
 import Fastify, { FastifyReply, FastifyRequest } from "fastify";
 import formbody from "@fastify/formbody";
-import fastifyJwt, { FastifyJWT, JWT } from "@fastify/jwt";
+import fastifyJwt, { JWT } from "@fastify/jwt";
 
 import { healthCheck } from "./routes/healthCheck.js";
 import { JsonSchemaToTsProvider } from "@fastify/type-provider-json-schema-to-ts";
@@ -37,15 +37,8 @@ const fastify = Fastify({
 
 
 const authenticate = async (request: FastifyRequest, reply: FastifyReply) => {
-  const auth = request.headers.authorization;
-  const token = auth?.replace('Bearer ', '');
-
-  if (!token) {
-    return reply.status(401).send({ message: NOT_AUTHORIZED });
-  }
-
   try {
-    const verify = await request.jwtVerify();
+    await request.jwtVerify();
   } catch(error) {
     return reply.status(401).send({ message: NOT_AUTHORIZED });
   }
@@ -62,7 +55,7 @@ fastify.addHook("onRequest", async (request, reply) => {
   }
 });
 
-// Login to crate a token
+// Login to create a token
 fastify.route({
   method: "POST",
   url: "/login",
