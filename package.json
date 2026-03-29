@@ -1,0 +1,33 @@
+{
+  "name": "mono-ts-example",
+  "version": "1.0.0",
+  "description": "Mono-repo containing various examples",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "eslint": "^10.1.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisc67/mono-ts-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/chrisc67/mono-ts-example/issues"
+  },
+  "homepage": "https://github.com/chrisc67/mono-ts-example#readme",
+  "workspaces": [
+    "packages/core",
+    "packages/jotai-ui",
+    "packages/toggle",
+    "packages/backend"
+  ]
+}

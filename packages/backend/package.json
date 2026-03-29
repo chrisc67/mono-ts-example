@@ -1,0 +1,25 @@
+{
+  "name": "@ts-monorepo/backend",
+  "version": "1.0.0",
+  "description": "Backend Fasify Application",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest test.ts",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/formbody": "^8.0.2",
+    "@fastify/jwt": "^10.0.0",
+    "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
+    "fastify": "^5.8.4"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "ts-node": "^10.9.2"
+  }
+}
