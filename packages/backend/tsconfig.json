@@ -2,15 +2,23 @@
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "target": "ES2022",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
+    "module": "preserve",
+    "moduleResolution": "bundler",
     "outDir": "./dist",
-    "rootDir": "./src"
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "types": ["node", "jest"],
+    "isolatedModules": true,
+    "removeComments": true
   },
-  "include": ["src", "**/*.test.ts", "**/*.spec.ts"]
+  "include": ["src/**/*", "tests"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"],
+  "ts-node": {
+    "esm": true
+  }
 }
