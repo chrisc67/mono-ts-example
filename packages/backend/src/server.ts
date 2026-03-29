@@ -46,7 +46,6 @@ const authenticate = async (request: FastifyRequest, reply: FastifyReply) => {
 
   try {
     const verify = await request.jwtVerify();
-    console.log('Token Verify:', verify.toString());
   } catch(error) {
     return reply.status(401).send({ message: NOT_AUTHORIZED });
   }
