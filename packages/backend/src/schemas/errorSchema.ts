@@ -4,5 +4,3 @@ export const errorSchema = {
     message: { type: "string" },
   },
 } as const;
-
-export default errorSchema;
