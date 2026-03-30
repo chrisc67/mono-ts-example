@@ -1,4 +1,7 @@
 {
   "files": [],
-  "references": [{ "path": "packages/core" }, { "path": "packages/jotai-ui" }, {"path": "packages/toggle"}, {"path": "packages/backend"}]
+  "references": [
+    { "path": "packages/jotai-ui" },
+    { "path": "packages/backend" }
+  ]
 }

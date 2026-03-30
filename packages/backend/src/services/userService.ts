@@ -11,16 +11,6 @@ export type User = {
   is_admin: boolean;
 };
 
-export const getUserByUserName = async (username: string) => {
-  const foundUser = findUserByName(username);
-
-  if (foundUser) {
-    const user: User = { ...foundUser, is_admin: foundUser.role === ADMIN };
-    return user;
-  }
-  return null;
-};
-
 export const getAllUsers = async () => {
   const userList: User[] = users.map((usr) => {
     const user: User = {...usr,  is_admin: usr.role === ADMIN};

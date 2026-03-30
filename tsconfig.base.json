@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES2022",                  // Match modern Node.js features
-    "lib": ["ES2022"],                   // Include latest ECMAScript libs
-    "module": "nodenext",                  // Node.js ESM support
-    "moduleResolution": "nodenext",          // Match Node's ESM resolution
+    "target": "ES2022", // Match modern Node.js features
+    "lib": ["ES2022"], // Include latest ECMAScript libs
+    "module": "nodenext", // Node.js ESM support
+    "moduleResolution": "nodenext", // Match Node's ESM resolution
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,

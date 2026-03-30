@@ -13,5 +13,7 @@ export default {
   moduleNameMapper: {
     "^(\\.{1,2}/.*)\\.[jt]s$": "$1",
   },
+  collectCoverage: true,
+  coverageReporters: ['html','lcov', 'text', 'text-summary'],
   testTimeout: 30000,
 };
