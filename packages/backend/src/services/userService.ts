@@ -1,4 +1,5 @@
 import { users } from "../constants/users.js";
+import bcrypt from "bcrypt";
 
 const ADMIN = "admin";
 
@@ -13,13 +14,12 @@ export type User = {
 
 export const getAllUsers = async () => {
   const userList: User[] = users.map((usr) => {
-    const user: User = {...usr,  is_admin: usr.role === ADMIN};
+    const user: User = { ...usr, is_admin: usr.role === ADMIN };
     return user;
   });
 
   return userList;
 };
-
 
 export const getUserById = async (userId: number) => {
   const foundUser = findUserById(userId);
@@ -32,9 +32,9 @@ export const getUserById = async (userId: number) => {
 
 export const loginValid = async (username: string, password: string) => {
   const foundUser = findUserByName(username);
-  
-  if (foundUser && password === foundUser.password) {
-    const user: User = {...foundUser, is_admin: foundUser.role === ADMIN}
+
+  if (foundUser && (await bcrypt.compare(password, foundUser.password_hash))) {
+    const user: User = { ...foundUser, is_admin: foundUser.role === ADMIN };
     return user;
   }
 

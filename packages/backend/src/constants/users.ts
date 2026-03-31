@@ -1,12 +1,23 @@
-export const users = [
+type User = {
+    user_id: number,
+    username: string,
+    first_name: string,
+    last_name: string,
+    email: string,
+    role: string,
+    password_hash: string  
+}
+
+
+export const users: User[] = [
   {
     user_id: 1,
     username: "admin",
     first_name: "John",
     last_name: "Water",
     email: "jwater0@ucsd.edu",
-    password: "admin",
     role: "admin",
+    password_hash: "$2b$12$xF0M5nxpsPwj1L5j5Eb4PeH3ogyXXcL//dSBuiGzb.EJ3mJlLYtKq"
   },
   {
     user_id: 2,
@@ -14,8 +25,8 @@ export const users = [
     first_name: "Marlin",
     last_name: "Morcombe",
     email: "mmorcombe1@icio.us",
-    password: "testuser",
     role: "user",
+    password_hash: "$2b$12$HNrgKwdWrZEVt1x2fjMsWeZreJ3osjEZVgYhplQ8ZFx1ENc9pJpP."
   },
   {
     user_id: 3,
@@ -23,8 +34,8 @@ export const users = [
     first_name: "Petra",
     last_name: "Echallier",
     email: "pechallier2@java.com",
-    password: "sI4)5o,!wBZ&Qz",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 4,
@@ -32,8 +43,8 @@ export const users = [
     first_name: "Dredi",
     last_name: "Bonds",
     email: "dbonds3@utexas.edu",
-    password: "tJ2fe3M0%n",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 5,
@@ -41,8 +52,8 @@ export const users = [
     first_name: "Kirsteni",
     last_name: "Denisovo",
     email: "kdenisovo4@yale.edu",
-    password: 'dM2bIl(Oq"RTu<mo',
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 6,
@@ -50,8 +61,8 @@ export const users = [
     first_name: "Karlyn",
     last_name: "Jozwiak",
     email: "kjozwiak5@lycos.com",
-    password: "nD32Wy5/$%Q_",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 7,
@@ -59,8 +70,8 @@ export const users = [
     first_name: "Isaiah",
     last_name: "De Bischof",
     email: "idebischof6@naver.com",
-    password: "rV7PMGeOjQiJ!xk",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 8,
@@ -68,8 +79,8 @@ export const users = [
     first_name: "Barbra",
     last_name: "Denning",
     email: "bdenning7@blogtalkradio.com",
-    password: "fF5|6@p~jA6A",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 9,
@@ -77,8 +88,8 @@ export const users = [
     first_name: "Melonie",
     last_name: "Benedyktowicz",
     email: "mbenedyktowicz8@zdnet.com",
-    password: "tE4oe*hG{}Q>v",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 10,
@@ -86,8 +97,8 @@ export const users = [
     first_name: "Letitia",
     last_name: "Di Ruggiero",
     email: "ldiruggiero9@people.com.cn",
-    password: "jC8X7t'B8q~",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 11,
@@ -95,8 +106,8 @@ export const users = [
     first_name: "Dilly",
     last_name: "Cawkill",
     email: "dcawkilla@uol.com.br",
-    password: "wX55.WAQTw*",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 12,
@@ -104,8 +115,8 @@ export const users = [
     first_name: "Darsie",
     last_name: "Rozzell",
     email: "drozzellb@cmu.edu",
-    password: "uK3P?k)6CnS/i1",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 13,
@@ -113,8 +124,8 @@ export const users = [
     first_name: "Terrance",
     last_name: "Worthing",
     email: "tworthingc@yellowpages.com",
-    password: "uS6Qwp_lQQemO",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 14,
@@ -122,8 +133,8 @@ export const users = [
     first_name: "Erasmus",
     last_name: "Fortun",
     email: "efortund@linkedin.com",
-    password: "jM1zi|k9~EV",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 15,
@@ -131,8 +142,8 @@ export const users = [
     first_name: "Franciskus",
     last_name: "Gammon",
     email: "fgammone@symantec.com",
-    password: "sI99%U@h|Y",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 16,
@@ -140,8 +151,8 @@ export const users = [
     first_name: "Bertrando",
     last_name: "Heatley",
     email: "bheatleyf@so-net.ne.jp",
-    password: "vP8e605|o@Vr*",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 17,
@@ -149,8 +160,8 @@ export const users = [
     first_name: "Jsandye",
     last_name: "Macieiczyk",
     email: "jmacieiczykg@nifty.com",
-    password: "rM70$|tmi3!t",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 18,
@@ -158,8 +169,8 @@ export const users = [
     first_name: "Drucill",
     last_name: "Gergely",
     email: "dgergelyh@loc.gov",
-    password: "wT4#\\&Rg?m,",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 19,
@@ -167,8 +178,8 @@ export const users = [
     first_name: "Mala",
     last_name: "Schruurs",
     email: "mschruursi@elegantthemes.com",
-    password: "xR6S5qL+jms",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 20,
@@ -176,8 +187,8 @@ export const users = [
     first_name: "Darill",
     last_name: "McCome",
     email: "dmccomej@thetimes.co.uk",
-    password: "cG8CDc3.Ot*A16Z",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 21,
@@ -185,8 +196,8 @@ export const users = [
     first_name: "Inger",
     last_name: "Clever",
     email: "icleverk@hubpages.com",
-    password: "mQ3dkZ$`~)*V",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 22,
@@ -194,8 +205,8 @@ export const users = [
     first_name: "Der",
     last_name: "Lavens",
     email: "dlavensl@google.com.hk",
-    password: "yL9fQIBSe<I*Al\\",
     role: "admin",
+    password_hash: ""
   },
   {
     user_id: 23,
@@ -203,8 +214,8 @@ export const users = [
     first_name: "Nevin",
     last_name: "Vedyashkin",
     email: "nvedyashkinm@google.cn",
-    password: "uO1%*%ztTdxwokqh",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 24,
@@ -212,8 +223,8 @@ export const users = [
     first_name: "Nani",
     last_name: "Vinden",
     email: "nvindenn@virginia.edu",
-    password: "bD1mQPz+6bvs",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 25,
@@ -221,8 +232,8 @@ export const users = [
     first_name: "Cordy",
     last_name: "McHale",
     email: "cmchaleo@wikimedia.org",
-    password: "iF7%F&}y.qx0V",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 26,
@@ -230,8 +241,8 @@ export const users = [
     first_name: "Nester",
     last_name: "Heaps",
     email: "nheapsp@cnn.com",
-    password: "qK9@%n(yLm",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 27,
@@ -239,8 +250,8 @@ export const users = [
     first_name: "Tim",
     last_name: "Drews",
     email: "tdrewsq@imageshack.us",
-    password: "yI8WF!MXDK",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 28,
@@ -248,8 +259,8 @@ export const users = [
     first_name: "Roma",
     last_name: "Chillingworth",
     email: "rchillingworthr@xinhuanet.com",
-    password: "aW6>62GCaDu+#f",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 29,
@@ -257,8 +268,8 @@ export const users = [
     first_name: "Morris",
     last_name: "Simoni",
     email: "msimonis@go.com",
-    password: "lR7DsWDlT#V*",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 30,
@@ -266,8 +277,8 @@ export const users = [
     first_name: "Ebenezer",
     last_name: "Giovani",
     email: "egiovanit@last.fm",
-    password: "sI8|Mil@xsO",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 31,
@@ -275,8 +286,8 @@ export const users = [
     first_name: "Erroll",
     last_name: "Willcot",
     email: "ewillcotu@umich.edu",
-    password: "qW4vdUtsV@$4Xg",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 32,
@@ -284,8 +295,8 @@ export const users = [
     first_name: "Ludvig",
     last_name: "Duncklee",
     email: "ldunckleev@columbia.edu",
-    password: "xW38+6{t0'QbV_Qt",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 33,
@@ -293,8 +304,8 @@ export const users = [
     first_name: "Orran",
     last_name: "Chesson",
     email: "ochessonw@buzzfeed.com",
-    password: "eG0Oa.,/#xH\\",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 34,
@@ -302,8 +313,8 @@ export const users = [
     first_name: "Willdon",
     last_name: "Franey",
     email: "wfraneyx@pagesperso-orange.fr",
-    password: "iZ0H#BNP5p>w",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 35,
@@ -311,8 +322,8 @@ export const users = [
     first_name: "Paxton",
     last_name: "Winstone",
     email: "pwinstoney@mashable.com",
-    password: "fV8S3ZHKIj",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 36,
@@ -320,8 +331,8 @@ export const users = [
     first_name: "Laraine",
     last_name: "Lappine",
     email: "llappinez@zdnet.com",
-    password: "gP9ilFZ.DWu>8",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 37,
@@ -329,8 +340,8 @@ export const users = [
     first_name: "Sunny",
     last_name: "Felder",
     email: "sfelder10@nytimes.com",
-    password: 'uJ77KGgNQ8">C',
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 38,
@@ -338,8 +349,8 @@ export const users = [
     first_name: "Cullen",
     last_name: "Parsonage",
     email: "cparsonage11@oakley.com",
-    password: "xN5i`kU``qyp}",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 39,
@@ -347,8 +358,8 @@ export const users = [
     first_name: "Austin",
     last_name: "Fonquernie",
     email: "afonquernie12@redcross.org",
-    password: "mX5alJ=u",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 40,
@@ -356,8 +367,8 @@ export const users = [
     first_name: "Dorothea",
     last_name: "Presho",
     email: "dpresho13@digg.com",
-    password: "qL3hI`a\\",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 41,
@@ -365,8 +376,8 @@ export const users = [
     first_name: "Cicily",
     last_name: "Lowten",
     email: "clowten14@hhs.gov",
-    password: "fL3/l9qXpC.Y",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 42,
@@ -374,8 +385,8 @@ export const users = [
     first_name: "Roland",
     last_name: "Minchell",
     email: "rminchell15@pinterest.com",
-    password: "mG8$3|TJ#8",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 43,
@@ -383,8 +394,8 @@ export const users = [
     first_name: "Victoria",
     last_name: "Santarelli",
     email: "vsantarelli16@ebay.com",
-    password: "hN0Ag@,%obzm=sp",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 44,
@@ -392,8 +403,8 @@ export const users = [
     first_name: "Meriel",
     last_name: "Matthius",
     email: "mmatthius17@instagram.com",
-    password: "kL4`MfY$V!",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 45,
@@ -401,8 +412,8 @@ export const users = [
     first_name: "Malia",
     last_name: "Marciskewski",
     email: "mmarciskewski18@berkeley.edu",
-    password: "pN6,?e&c>D6b!lL",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 46,
@@ -410,8 +421,8 @@ export const users = [
     first_name: "Carrie",
     last_name: "Goldston",
     email: "cgoldston19@mozilla.org",
-    password: "dF0NAs4X0N",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 47,
@@ -419,8 +430,8 @@ export const users = [
     first_name: "Horacio",
     last_name: "Mabbot",
     email: "hmabbot1a@hp.com",
-    password: "lW7?U#%D@5OAX",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 48,
@@ -428,8 +439,8 @@ export const users = [
     first_name: "Robert",
     last_name: "Perillio",
     email: "rperillio1b@ocn.ne.jp",
-    password: 'pF2"1)sFPfX(M',
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 49,
@@ -437,8 +448,8 @@ export const users = [
     first_name: "Natalie",
     last_name: "Bagg",
     email: "nbagg1c@scribd.com",
-    password: "cQ4Old2SnQW2Am*",
     role: "user",
+    password_hash: ""
   },
   {
     user_id: 50,
@@ -446,8 +457,8 @@ export const users = [
     first_name: "Marjie",
     last_name: "Murkin",
     email: "mmurkin1d@miitbeian.gov.cn",
-    password: "aC0i\\Dc3K",
     role: "user",
+    password_hash: ""
   },
 ];
 

@@ -17,11 +17,13 @@
     "@fastify/formbody": "^8.0.2",
     "@fastify/jwt": "^10.0.0",
     "@fastify/type-provider-json-schema-to-ts": "^5.0.0",
+    "bcrypt": "^6.0.0",
     "dotenv": "^17.3.1",
     "fastify": "^5.8.4"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@types/bcrypt": "^6.0.0",
     "@types/jest": "^29.5.12",
     "@types/node": "^25.5.0",
     "jest": "^29.7.0",
