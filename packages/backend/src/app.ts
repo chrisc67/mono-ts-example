@@ -8,7 +8,7 @@ import formbody from "@fastify/formbody";
 import fastifyJwt, { JWT } from "@fastify/jwt";
 import { JsonSchemaToTsProvider } from "@fastify/type-provider-json-schema-to-ts";
 import {
-  EXPIRES_IN,
+  EXPIRES_MIN,
   INVALID_LOGIN,
   LOGIN_SUCCESS,
   NOT_AUTHORIZED,
@@ -19,7 +19,8 @@ import { loginValid } from "./services/userService.js";
 import { healthCheck } from "./routes/healthCheck.js";
 import { userListRoute } from "./routes/userListRoute.js";
 import { userRoute } from "./routes/userRoute.js";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import { currentDateISO } from "./utils/dateUtils.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -61,7 +62,7 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
 
   server.register(formbody);
   server.register(fastifyJwt, {
-    secret: apiKey ?? '',
+    secret: apiKey ?? "",
   });
 
   server.addHook("onRequest", async (request, reply) => {
@@ -88,13 +89,14 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
       if (user) {
         const token = server.jwt.sign(
           { user_id: user.user_id, is_admin: user.is_admin },
-          { expiresIn: EXPIRES_IN },
+          { expiresIn: `${EXPIRES_MIN}m` },
         );
         return {
           message: LOGIN_SUCCESS,
           token: token,
           user_id: user.user_id,
           is_admin: user.is_admin,
+          expires_at: currentDateISO(EXPIRES_MIN),
         };
       }
 
@@ -108,7 +110,7 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
     url: "/refresh",
     schema: {
       response: {
-        200: { token: { type: "string" } },
+        200: { token: { type: "string" }, expires_at: { type: "string" } },
         401: errorSchema,
       },
     },
@@ -118,11 +120,15 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
     handler: async (request) => {
       const user = request.user;
       const token = server.jwt.sign(
-        { user_id: user.user_id, is_admin: user.is_admin },
-        { expiresIn: EXPIRES_IN },
+        {
+          user_id: user.user_id,
+          is_admin: user.is_admin,
+        },
+        { expiresIn: `${EXPIRES_MIN}m` },
       );
       return {
         token: token,
+        expires_at: currentDateISO(EXPIRES_MIN),
       };
     },
   });
