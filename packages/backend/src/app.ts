@@ -21,6 +21,7 @@ import { userListRoute } from "./routes/userListRoute.js";
 import { userRoute } from "./routes/userRoute.js";
 import dotenv from "dotenv";
 import { currentDateISO } from "./utils/dateUtils.js";
+import { getAllProductsRoute, getProductRoute, postLoadAllProductsRoute } from "./routes/productRoutes.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -137,6 +138,10 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
   server.route(healthCheck);
   server.route(userListRoute);
   server.route(userRoute);
+  server.route(getProductRoute);
+  server.route(getAllProductsRoute);
+  server.route(postLoadAllProductsRoute)
+
 
   return server;
 }

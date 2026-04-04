@@ -4,3 +4,5 @@ export const BAD_REQUEST = "Bad Request";
 export const NOT_FOUND = "Not Found";
 export const INVALID_LOGIN = "Invalid UserName or Password";
 export const LOGIN_SUCCESS = "Login Successful";
+export const SUCCESS = "Successful";
+
