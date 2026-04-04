@@ -1,8 +1,10 @@
 import { useRoutes } from "react-router";
-import { dashboardRoutes } from "./DashboardRoutes";
+import { mainRoutes } from "./mainRoutes";
+import { protectedRoutes } from "./protectedRoutes";
+import { hiddenMenudRoutes } from "./hiddenMenuRoutes";
 
-export const AppRoutes = () =>  {
+export const AppRoutes = () => {
   // Combine route configs from multiple files
-  const routes = useRoutes([dashboardRoutes]);
+  const routes = useRoutes([mainRoutes, protectedRoutes, hiddenMenudRoutes]);
   return routes;
-}
+};
