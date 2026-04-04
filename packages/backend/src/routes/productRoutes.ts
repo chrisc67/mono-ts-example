@@ -5,7 +5,12 @@ import {
 } from "../database/product/productReposity.js";
 import { errorSchema } from "../schemas/errorSchema.js";
 import { FastifyReply, FastifyRequest } from "fastify";
-import { BAD_REQUEST, NOT_AUTHORIZED, NOT_FOUND, SUCCESS } from "../constants/messages.js";
+import {
+  BAD_REQUEST,
+  NOT_AUTHORIZED,
+  NOT_FOUND,
+  SUCCESS,
+} from "../constants/messages.js";
 import { loadProducts } from "../database/product/loadProducts.js";
 import { Product } from "../database/product/productTable.js";
 
@@ -13,7 +18,7 @@ export const getAllProductsRoute = {
   method: "GET",
   url: "/api/products",
   handler: async () => {
-    const products: Product[] = await getAllProducts();  
+    const products: Product[] = await getAllProducts();
 
     return { products: products };
   },
@@ -48,7 +53,6 @@ export const getProductRoute = {
   },
 };
 
-
 export const postLoadAllProductsRoute = {
   method: "POST",
   url: "/api/products",
@@ -63,8 +67,8 @@ export const postLoadAllProductsRoute = {
     try {
       if (request.user.is_admin) {
         await loadProducts();
-      } else  {
-        reply.code(401).send({ message: NOT_AUTHORIZED });  
+      } else {
+        reply.code(401).send({ message: NOT_AUTHORIZED });
       }
 
       reply.code(200).send(SUCCESS);

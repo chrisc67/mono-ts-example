@@ -17,6 +17,6 @@ export const productListSchema = {
     products: {
       type: "array",
       items: productSchema,
-    }
-  }
+    },
+  },
 } as const;

@@ -3,7 +3,6 @@ import { userListSchema } from "../schemas/userSchema.js";
 import { FastifyRequest } from "fastify";
 import { User } from "../database/user/userTable.js";
 
-
 export const userListRoute = {
   method: "GET",
   url: "/api/users",
@@ -23,14 +22,14 @@ export const userListRoute = {
         last_name: usr.last_name,
         email: usr.email,
         created_at: usr.created_at,
-        is_admin: usr.role === 'admin'
+        is_admin: usr.role === "admin",
       };
       return userResp;
-      })
+    });
     if (is_admin) {
-      return {users: users}
+      return { users: users };
     } else {
-      return {users: users.filter((usr) => usr.id === request.user.id)}
+      return { users: users.filter((usr) => usr.id === request.user.id) };
     }
   },
 };

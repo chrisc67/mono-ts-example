@@ -5,4 +5,3 @@ export const NOT_FOUND = "Not Found";
 export const INVALID_LOGIN = "Invalid UserName or Password";
 export const LOGIN_SUCCESS = "Login Successful";
 export const SUCCESS = "Successful";
-

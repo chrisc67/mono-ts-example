@@ -1,14 +1,14 @@
 import { build } from "../app";
-import { describe, test, expect} from '@jest/globals';
+import { describe, test, expect } from "@jest/globals";
 
 const app = build();
-const adminUser = {username: 'admin', password: 'admin'};
+const adminUser = { username: "admin", password: "admin" };
 
 describe("/refresh", () => {
   test("is not authorized", async () => {
     const res = await app.inject({
       url: "/refresh",
-      method: "POST"
+      method: "POST",
     });
     expect(res.json().message).toEqual("Not Authorized");
   });
@@ -17,7 +17,7 @@ describe("/refresh", () => {
     const loginResp = await app.inject({
       url: "/login",
       method: "POST",
-      body: adminUser
+      body: adminUser,
     });
 
     const loginBody = loginResp.json();
@@ -27,11 +27,10 @@ describe("/refresh", () => {
       url: "/refresh",
       method: "POST",
       headers: {
-        authorization: `Bearer ${token}`
-      }
+        authorization: `Bearer ${token}`,
+      },
     });
 
-    expect(res.json()).toHaveProperty('token');
-  }); 
-   
+    expect(res.json()).toHaveProperty("token");
+  });
 });

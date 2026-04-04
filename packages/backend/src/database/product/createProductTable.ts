@@ -9,7 +9,9 @@ const createProductTable = async () => {
     .addColumn("description", "text", (col) => col.notNull())
     .addColumn("category", "text", (col) => col.notNull())
     .addColumn("price", "real", (col) => col.notNull())
-    .addForeignKeyConstraint("product_category_fk", ["category"], "category", ["category"])
+    .addForeignKeyConstraint("product_category_fk", ["category"], "category", [
+      "category",
+    ])
     .execute();
 };
 

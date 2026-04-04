@@ -1,17 +1,17 @@
 export const healthCheck = {
-  method: 'GET',
-  url: '/healthcheck',
+  method: "GET",
+  url: "/healthcheck",
   schema: {
     response: {
       200: {
-        type: 'object',
+        type: "object",
         properties: {
-          status: { type: 'string' }
-        }
-      }
-    }
+          status: { type: "string" },
+        },
+      },
+    },
   },
   handler: async () => {
-    return { status: 'OK' }
-  }
+    return { status: "OK" };
+  },
 };

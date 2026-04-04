@@ -13,6 +13,6 @@ export const loginRespSchema = {
     message: { type: "string" },
     token: { type: "string" },
     user_id: { type: "number" },
-    expires_at: {type: "string"}
+    expires_at: { type: "string" },
   },
 } as const;

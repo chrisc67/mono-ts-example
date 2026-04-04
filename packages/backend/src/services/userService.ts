@@ -1,16 +1,19 @@
-import { dbAllUsers, dbGetUserById, dbGetUserByName } from "../database/user/userRepository.js";
+import {
+  dbAllUsers,
+  dbGetUserById,
+  dbGetUserByName,
+} from "../database/user/userRepository.js";
 import { User } from "../database/user/userTable.js";
 
 export type UserResponse = {
-  id: number,
-  user_name: string,
-  first_name: string,
-  last_name: string,
-  email: string,
-  created_at: Date,
-  is_admin: boolean
-}
-
+  id: number;
+  user_name: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  created_at: Date;
+  is_admin: boolean;
+};
 
 export const getAllUsers = async () => {
   const userList: User[] = await dbAllUsers();
@@ -38,5 +41,4 @@ export const getUserByName = async (username: string) => {
     return dbUser;
   }
   return null;
-
 };

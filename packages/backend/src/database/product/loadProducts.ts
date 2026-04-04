@@ -1248,23 +1248,23 @@ export const loadProducts = async () => {
 
   for (const product of products) {
     categories.add(product.category);
-  };
-  
-  await db.deleteFrom('category').execute();
-  
-  for (const category of categories) {
-    db.insertInto("category")
-    .values({category: category})
-    .onConflict((oc) => oc.doNothing())
-    .execute();
   }
 
-  await db.deleteFrom('product').execute();
+  await db.deleteFrom("category").execute();
+
+  for (const category of categories) {
+    db.insertInto("category")
+      .values({ category: category })
+      .onConflict((oc) => oc.doNothing())
+      .execute();
+  }
+
+  await db.deleteFrom("product").execute();
 
   for (const product of products) {
     db.insertInto("product")
       .values(product)
       .onConflict((oc) => oc.doNothing())
       .execute();
-  };
+  }
 };

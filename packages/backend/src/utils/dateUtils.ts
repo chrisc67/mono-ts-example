@@ -4,4 +4,4 @@ export const currentDateISO = (addMin?: number) => {
     currentDate.setMinutes(currentDate.getMinutes() + addMin);
   }
   return currentDate.toISOString();
-}
+};

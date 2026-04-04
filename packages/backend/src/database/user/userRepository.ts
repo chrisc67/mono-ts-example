@@ -10,7 +10,7 @@ export const dbAllUsers = async () => {
 export const dbGetUserById = async (id: number) => {
   const user: User | undefined = await db
     .selectFrom("user as u")
-    .selectAll()    
+    .selectAll()
     .where("u.id", "=", id)
     .executeTakeFirst();
   return user;

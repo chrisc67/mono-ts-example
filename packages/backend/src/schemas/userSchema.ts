@@ -6,7 +6,7 @@ export const userSchema = {
     first_name: { type: "string" },
     last_name: { type: "string" },
     email: { type: "string" },
-    created_at: { type: "string", format: "date-time"},
+    created_at: { type: "string", format: "date-time" },
     is_admin: { type: "boolean" },
   },
 } as const;
