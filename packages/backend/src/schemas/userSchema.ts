@@ -1,11 +1,12 @@
 export const userSchema = {
   type: "object",
   properties: {
-    user_id: { type: "number" },
+    id: { type: "number" },
     username: { type: "string" },
     first_name: { type: "string" },
     last_name: { type: "string" },
     email: { type: "string" },
+    created_at: { type: "string", format: "date-time"},
     is_admin: { type: "boolean" },
   },
 } as const;
@@ -15,17 +16,7 @@ export const userListSchema = {
   properties: {
     users: {
       type: "array",
-      items: {
-        type: "object",
-        properties: {
-          user_id: { type: "number" },
-          username: { type: "string" },
-          first_name: { type: "string" },
-          last_name: { type: "string" },
-          email: { type: "string" },
-          is_admin: { type: "boolean" },
-        },
-      },
+      items: { userSchema },
     },
   },
 } as const;

@@ -15,13 +15,18 @@ import {
 } from "./constants/messages.js";
 import { loginRespSchema, loginSchema } from "./schemas/loginSchema.js";
 import { errorSchema } from "./schemas/errorSchema.js";
-import { loginValid } from "./services/userService.js";
+import { getUserByName } from "./services/userService.js";
 import { healthCheck } from "./routes/healthCheck.js";
 import { userListRoute } from "./routes/userListRoute.js";
 import { userRoute } from "./routes/userRoute.js";
 import dotenv from "dotenv";
+import bcrypt from "bcrypt";
 import { currentDateISO } from "./utils/dateUtils.js";
-import { getAllProductsRoute, getProductRoute, postLoadAllProductsRoute } from "./routes/productRoutes.js";
+import {
+  getAllProductsRoute,
+  getProductRoute,
+  postLoadAllProductsRoute,
+} from "./routes/productRoutes.js";
 
 declare module "fastify" {
   interface FastifyRequest {
@@ -39,7 +44,7 @@ declare module "@fastify/jwt" {
 }
 
 type UserPayload = {
-  user_id: number;
+  id: number;
   is_admin: boolean;
 };
 
@@ -85,20 +90,23 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
     },
     handler: async (request, reply) => {
       const { username, password } = request.body;
-      const user = await loginValid(username, password);
+      const user = await getUserByName(username);
 
       if (user) {
-        const token = server.jwt.sign(
-          { user_id: user.user_id, is_admin: user.is_admin },
-          { expiresIn: `${EXPIRES_MIN}m` },
-        );
-        return {
-          message: LOGIN_SUCCESS,
-          token: token,
-          user_id: user.user_id,
-          is_admin: user.is_admin,
-          expires_at: currentDateISO(EXPIRES_MIN),
-        };
+        if (await bcrypt.compare(password, user.password_hash)) {
+          const token = server.jwt.sign(
+            { id: user.id, is_admin: user.role === "admin" },
+            { expiresIn: `${EXPIRES_MIN}m` },
+          );
+          return {
+            message: LOGIN_SUCCESS,
+            token: token,
+            id: user.id,
+            is_admin: user.role === "admin",
+            expires_at: currentDateISO(EXPIRES_MIN),
+          };
+        }
+        reply.code(403).send({ message: INVALID_LOGIN });
       }
 
       reply.code(403).send({ message: INVALID_LOGIN });
@@ -122,7 +130,7 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
       const user = request.user;
       const token = server.jwt.sign(
         {
-          user_id: user.user_id,
+          user_id: user.id,
           is_admin: user.is_admin,
         },
         { expiresIn: `${EXPIRES_MIN}m` },
@@ -140,8 +148,7 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
   server.route(userRoute);
   server.route(getProductRoute);
   server.route(getAllProductsRoute);
-  server.route(postLoadAllProductsRoute)
-
+  server.route(postLoadAllProductsRoute);
 
   return server;
 }

@@ -1,51 +1,44 @@
-import { users } from "../constants/users.js";
-import bcrypt from "bcrypt";
+import { dbAllUsers, dbGetUserById, dbGetUserByName } from "../database/user/userRepository.js";
+import { User } from "../database/user/userTable.js";
 
 const ADMIN = "admin";
 
-export type User = {
-  user_id: number;
-  username: string;
-  first_name: string;
-  last_name: string;
-  email: string;
-  is_admin: boolean;
-};
+export type UserResponse = {
+  id: number,
+  user_name: string,
+  first_name: string,
+  last_name: string,
+  email: string,
+  created_at: Date,
+  is_admin: boolean
+}
+
 
 export const getAllUsers = async () => {
-  const userList: User[] = users.map((usr) => {
-    const user: User = { ...usr, is_admin: usr.role === ADMIN };
-    return user;
-  });
+  const userList: User[] = await dbAllUsers();
 
   return userList;
 };
 
 export const getUserById = async (userId: number) => {
-  const foundUser = findUserById(userId);
-  if (foundUser) {
-    const user: User = { ...foundUser, is_admin: foundUser.role === ADMIN };
-    return user;
+  if (userId) {
+    const dbUser: User | undefined = await dbGetUserById(userId);
+    if (dbUser === undefined) {
+      return null;
+    }
+    return dbUser;
   }
   return null;
 };
 
-export const loginValid = async (username: string, password: string) => {
-  const foundUser = findUserByName(username);
-
-  if (foundUser && (await bcrypt.compare(password, foundUser.password_hash))) {
-    const user: User = { ...foundUser, is_admin: foundUser.role === ADMIN };
-    return user;
+export const getUserByName = async (username: string) => {
+  if (username) {
+    const dbUser: User | undefined = await dbGetUserByName(username);
+    if (dbUser === undefined) {
+      return null;
+    }
+    return dbUser;
   }
-
   return null;
-};
 
-// Helper functions
-const findUserByName = (username: string) => {
-  return users.find((usr) => usr.username === username);
-};
-
-const findUserById = (userId: number) => {
-  return users.find((usr) => usr.user_id === userId);
 };
