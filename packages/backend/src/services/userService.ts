@@ -1,8 +1,6 @@
 import { dbAllUsers, dbGetUserById, dbGetUserByName } from "../database/user/userRepository.js";
 import { User } from "../database/user/userTable.js";
 
-const ADMIN = "admin";
-
 export type UserResponse = {
   id: number,
   user_name: string,

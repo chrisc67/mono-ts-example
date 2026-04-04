@@ -1,5 +1,5 @@
 export const currentDateISO = (addMin?: number) => {
-  let currentDate = new Date();
+  const currentDate = new Date();
   if (addMin) {
     currentDate.setMinutes(currentDate.getMinutes() + addMin);
   }

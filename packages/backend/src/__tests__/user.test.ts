@@ -1,8 +1,6 @@
 import { build } from "../app";
 import { describe, test, expect } from "@jest/globals";
 
-const baseUrl = "http://sandbox";
-
 const app = build();
 const adminUser = { username: "admin", password: "admin" };
 const testUser = { username: "testuser", password: "testuser" };

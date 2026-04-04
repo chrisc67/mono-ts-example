@@ -33,6 +33,7 @@ declare module "fastify" {
     jwt: JWT;
   }
   export interface FastifyInstance {
+    // eslint-disable-next-line
     authenticate: any;
   }
 }
@@ -43,7 +44,7 @@ declare module "@fastify/jwt" {
   }
 }
 
-type UserPayload = {
+export type UserPayload = {
   id: number;
   is_admin: boolean;
 };
@@ -62,6 +63,7 @@ export function build(opts?: FastifyServerOptions): FastifyInstance {
     try {
       await request.jwtVerify();
     } catch (error) {
+      console.log(error);
       return reply.status(401).send({ message: NOT_AUTHORIZED });
     }
   };

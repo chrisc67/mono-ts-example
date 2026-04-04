@@ -1,4 +1,4 @@
-import { GeneratedAlways, Insertable, Selectable, sql, Updateable } from 'kysely'
+import { GeneratedAlways, Insertable, Selectable, Updateable } from 'kysely'
 
 
 export default interface UserTable {

@@ -50,6 +50,7 @@ export const userRoute = {
         reply.code(401).send({ message: NOT_AUTHORIZED });
       }
     } catch (err) {
+      console.log(err);
       reply.code(400).send({ message: BAD_REQUEST });
     }
   },

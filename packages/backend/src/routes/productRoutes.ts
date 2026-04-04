@@ -13,9 +13,7 @@ export const getAllProductsRoute = {
   method: "GET",
   url: "/api/products",
   handler: async () => {
-    let products: Product[] = [];
-    
-    products = await getAllProducts();  
+    const products: Product[] = await getAllProducts();  
 
     return { products: products };
   },
@@ -36,8 +34,7 @@ export const getProductRoute = {
 
     try {
       const productId = parseInt(id);
-      let foundProduct;
-      foundProduct = await getProductById(productId);
+      const foundProduct = await getProductById(productId);
 
       if (!foundProduct) {
         reply.code(404).send({ message: NOT_FOUND });
@@ -45,6 +42,7 @@ export const getProductRoute = {
 
       reply.code(200).send(foundProduct);
     } catch (err) {
+      console.log(err);
       reply.code(400).send({ message: BAD_REQUEST });
     }
   },
@@ -71,6 +69,7 @@ export const postLoadAllProductsRoute = {
 
       reply.code(200).send(SUCCESS);
     } catch (err) {
+      console.log(err);
       reply.code(400).send({ message: BAD_REQUEST });
     }
   },
